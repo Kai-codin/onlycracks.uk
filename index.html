@@ -86,6 +86,52 @@
     color:#555;
     font-size:.8rem;
   }
+
+  .overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+  }
+  .overlay.show{display:flex;}
+  .modal{
+    background:var(--grey);
+    border:2px solid var(--orange);
+    border-radius:14px;
+    padding:2rem 2.5rem;
+    max-width:340px;
+    text-align:center;
+    box-shadow:0 0 40px rgba(255,138,0,.35);
+    transform:scale(.9);
+    opacity:0;
+    animation:pop .25s ease forwards;
+  }
+  @keyframes pop{
+    to{transform:scale(1);opacity:1;}
+  }
+  .modal h2{
+    color:var(--orange);
+    font-size:1.3rem;
+    margin-bottom:.8rem;
+  }
+  .modal p{
+    color:#ddd;
+    margin-bottom:1.5rem;
+    line-height:1.4;
+  }
+  .modal button{
+    background:var(--orange);
+    color:#111;
+    font-weight:700;
+    border:none;
+    padding:.6rem 1.6rem;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:1rem;
+  }
 </style>
 </head>
 <body>
@@ -109,12 +155,20 @@
     <p>Get uncensored close-ups of load-bearing wall damage, straight from verified inspectors.</p>
   </div>
 
-  <button class="subscribe">Subscribe for £4.99/mo</button>
+  <button class="subscribe" onclick="document.getElementById('crackModal').classList.add('show')">Subscribe for £4.99/mo</button>
 </main>
 
 <footer>
   &copy; 2026 OnlyCracks — Not affiliated with anything. Concrete jokes only.
 </footer>
+
+<div class="overlay" id="crackModal">
+  <div class="modal">
+    <h2>👀 Whoa there!</h2>
+    <p>Wow, you really want to see our cracks huh?</p>
+    <button onclick="document.getElementById('crackModal').classList.remove('show')">Let me see them cracks</button>
+  </div>
+</div>
 
 </body>
 </html>
